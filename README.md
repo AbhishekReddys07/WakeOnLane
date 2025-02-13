@@ -1,35 +1,47 @@
-Note: not all the logic and additional functions are integrated, basically it's a baseline code, please check the below content to get an idea/Overview.
+# Wake-on-LAN Automation Tool
 
-Key Features:
+A Python-based **Wake-on-LAN (WoL) automation tool** with **enhanced security** features, including **AES-CBC encryption** and **VPN-secured** transmission.
 
-Device Status Checking: The script checks the status of the target device by pinging its IP address. If the device is already on, the WoL magic packet is not sent to avoid unnecessary wake-up attempts.
+## Features
+- ✅ Remotely power on network devices using **WoL protocol**
+- 🔒 **AES-CBC encryption** for secure transmission of magic packets
+- 🌐 **VPN support** for additional security
+- 🔍 **Device status check** to prevent unnecessary wake-up attempts
+- 🖥️ **User-friendly CLI** for easy operation
 
-Wake-on-LAN Magic Packet Generation: When the target device is offline, the script generates a WoL magic packet containing the MAC address of the target device. The magic packet is formatted according to the WoL protocol standards.
+## Technologies Used
+- **Python**
+- **Socket Programming**
+- **Cryptography Library** (for AES encryption)
+- **Wake-on-LAN Module**
+- **subprocess Module** (for system interaction)
 
-Encryption of Magic Packet: Before transmission, the magic packet is encrypted using AES-CBC encryption with a user-defined key. This step enhances security by preventing unauthorized access to the wake-up signal.
+## Installation
+1. **Clone the Repository**  
+   ```bash
+   git clone https://github.com/your-repo/wake-on-lan-tool.git
+   cd wake-on-lan-tool
+2. Install Dependencies : Ensure Python is installed on your system.
+   
+### Usage
+1. **Standard Wake-on-LAN**
+Run the Wakeonlane.py script to send a WoL magic packet to a target device.
+NOTE: Before running, update the script with your device details:
+server_ip = 'ENTER_DEVICE_IP'
+target_mac = 'ENTER_DEVICE_MAC
+2.**Secure Wake-on-LAN over VPN**
+Run the WakeonLane_VPN.py script for encrypted and VPN-secured transmission.
+NOTE: Before running, update the script with your network details:
+server_ip = 'ENTER_DEVICE_IP'
+target_mac = 'ENTER_DEVICE_MAC'
+key = b'YOUR_ENCRYPTION_KEY'
+destination_ip = 'VPN_DESTINATION_IP'
+destination_port = 9
 
-UDP Transmission: The encrypted magic packet is sent over UDP (User Datagram Protocol) to the destination IP address and port number specified in the configuration. UDP is chosen for its simplicity and efficiency in broadcasting wake-up signals over local networks.
-
-
-Configuration: Users need to configure the script by providing the following parameters:
-
-Server IP: IP address of the target device to wake up.
-Target MAC Address: MAC address of the target device in hexadecimal format.
-Encryption Key: Secret key used for AES encryption of the magic packet.
-Destination IP/Port: IP address and port number of the destination device to receive the encrypted magic packet.
-Execution: Once configured, the script can be executed to initiate the wake-up process. Upon execution, the script checks the device status, generates and encrypts the WoL magic packet, and transmits it to the destination.
-
-Benefits:
-
-Enhanced Security: Integration of encryption ensures secure transmission of the wake-up signal, reducing the risk of unauthorized access or tampering.
-Efficient Wake-up Process: The use of WoL technology enables users to remotely power on devices without physical access, promoting efficiency in network management and operations.
-Customizable Configuration: Users can easily customize the script parameters to adapt to different network environments and security requirements.
-Conclusion:
-
-The Encrypted Wake-on-LAN Magic Packet Sender offers a reliable and secure solution for remotely waking up devices on a network. By combining WoL technology with encryption techniques, the project facilitates efficient device management while prioritizing data security and integrity.
-
-
-
-
-
-
+**Notes**
+The target device must support Wake-on-LAN (WoL) in BIOS settings.
+Ensure WoL is enabled in the OS network adapter settings.
+If using VPN, configure it before running the script.
+**Disclaimer**
+This project is for educational and demonstration purposes only.
+Use responsibly and only on authorized devices.
